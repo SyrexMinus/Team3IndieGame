@@ -10,6 +10,7 @@ public class KnifeScript : MonoBehaviour
     private float x = 0;
     public float boundX = 150;//module of x boundaries of screen
     public float boundZ = 150;
+
     public void setDirection(Vector3 startOfDirection,Vector3 directionVector) {
         //finalDestinationVector = new Vector3(directionVector.x, 0f, directionVector.y);
         finalDestinationVector = directionVector;
@@ -44,7 +45,14 @@ public class KnifeScript : MonoBehaviour
 
         if (other.gameObject.tag == "Enemy")
         {
-            Destroy(other.gameObject);
+            GameObject enemyObject = other.gameObject;
+            enemy1 enemyScript = enemyObject.GetComponentInChildren<enemy1>();
+            if (enemyScript == null)
+            {
+                Debug.Log("Could not get <enemyScript> component in this GameObject or any of its children.");
+                return;
+            }
+            enemyScript.Damage(1, transform.forward * 1 * speed);
             Destroy(this.gameObject);
         }
     }

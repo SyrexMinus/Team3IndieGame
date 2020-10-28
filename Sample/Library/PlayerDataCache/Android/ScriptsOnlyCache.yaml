@@ -329,7 +329,7 @@ ScriptsOnlyBuild:
     className: TMP_SpriteAnimator
   - hash:
       serializedVersion: 2
-      Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
+      Hash: 45606f586b9b4ed3ddb80167f170e911
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
     className: enemy1
@@ -576,4 +576,4 @@ ScriptsOnlyBuild:
   platform: 13
   scenePathNames:
   - Assets/Scenes/Unity_Project1.unity
-  playerPath: C:/Users/kopko/Downloads/Team3IndieGame-master/Sample/sample.apk
+  playerPath: D:/P2P/Documents/Code/Game/Team3IndieGame/Sample/sample.apk

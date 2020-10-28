@@ -15,7 +15,7 @@ public class KnifeControllingScript : MonoBehaviour
     {
 
     }
-
+    
     // Update is called once per frame
     void Update()
     {
@@ -50,20 +50,22 @@ public class KnifeControllingScript : MonoBehaviour
             }
         }
     }
-    
+
     public IEnumerator startThrowing()
     {
 
         Debug.Log("throw");
         Debug.Log("start position " + startDragPosition);
         Debug.Log("end position " + endDragPosition);
-        GameObject knifeObject = Instantiate(knifePrefab, startDragPosition, Quaternion.identity);
-        KnifeScript knife = knifeObject.GetComponent<KnifeScript>();
-        
-        knife.setDirection(startDragPosition,endDragPosition);
-        isAbleToThrow = false;
-        yield return new WaitForSeconds(cooldownTime);
-        isAbleToThrow = true;
-    }
+        if (startDragPosition != endDragPosition)
+        {
+            GameObject knifeObject = Instantiate(knifePrefab, startDragPosition, Quaternion.identity);
+            KnifeScript knife = knifeObject.GetComponent<KnifeScript>();
 
+            knife.setDirection(startDragPosition, endDragPosition);
+            isAbleToThrow = false;
+            yield return new WaitForSeconds(cooldownTime);
+            isAbleToThrow = true;
+        }
+    }
 }
