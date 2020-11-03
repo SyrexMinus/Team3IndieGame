@@ -125,7 +125,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e49ccd703c891843a60fd6c72e27168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 50
   finalDestinationVector: {x: 0, y: 0, z: 0}
   isReadyForMovement: 0
   boundX: 150

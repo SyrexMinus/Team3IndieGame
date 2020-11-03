@@ -8,8 +8,8 @@ public class KnifeScript : MonoBehaviour
     public Vector3 finalDestinationVector;
     public bool isReadyForMovement;
     private float x = 0;
-    public float boundX = 150;//module of x boundaries of screen
-    public float boundZ = 150;
+    public float boundX;//module of x boundaries of screen
+    public float boundZ;
 
     public void setDirection(Vector3 startOfDirection,Vector3 directionVector) {
         //finalDestinationVector = new Vector3(directionVector.x, 0f, directionVector.y);

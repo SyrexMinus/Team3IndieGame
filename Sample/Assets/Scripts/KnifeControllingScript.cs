@@ -8,7 +8,7 @@ public class KnifeControllingScript : MonoBehaviour
     bool isAbleToThrow=true;
     Vector3 startDragPosition;
     Vector3 endDragPosition;
-    float cooldownTime=0.25f;
+    float cooldownTime=0.5f;
     public GameObject knifePrefab;
     // Start is called before the first frame update
     void Start()
