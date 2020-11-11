@@ -11,15 +11,16 @@ public class Treasure : MonoBehaviour
     public GameObject ObjectsStates4;
     public GameObject ObjectsStates5;
     // current state of Treasure
+    AudioSource sound;
     public GameObject currentObjectState;
     // lifes left
-    private int currentLifes = 5;
+    public int currentLifes;
     // function which changes lifes and model with them
     public void changeLifes(int deltaLifesChange)
     {
         currentLifes += deltaLifesChange;
         if (currentLifes <= 0)
-            currentLifes = 1;
+            currentLifes = 0;
         else if (currentLifes > 5)
             currentLifes = 5;
         // set corresponding object state to current lifes
@@ -27,18 +28,27 @@ public class Treasure : MonoBehaviour
         {
             case 1:
                 SetNewObject(ObjectsStates1);
+                sound.Play();
                 break;
             case 2:
                 SetNewObject(ObjectsStates2);
+                sound.Play();
                 break;
             case 3:
                 SetNewObject(ObjectsStates3);
+                sound.Play();
                 break;
             case 4:
                 SetNewObject(ObjectsStates4);
+                sound.Play();
                 break;
-            default: // case 5
+            case 5:
                 SetNewObject(ObjectsStates5);
+                sound.Play();
+                break;
+            default:
+                Destroy(currentObjectState);
+                sound.Play();
                 break;
         }
     }
@@ -51,6 +61,7 @@ public class Treasure : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        sound = GetComponent<AudioSource>();
         currentLifes = 5;
     }
 }

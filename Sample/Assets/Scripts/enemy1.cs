@@ -11,7 +11,7 @@ public class enemy1 : MonoBehaviour
     private float speedx, speedz;
     private float speed = 3;
     // lifes
-    public int lifes;
+    int lifes;
     // chance 1 life
     public int chance1Life = 50;
 
@@ -35,6 +35,18 @@ public class enemy1 : MonoBehaviour
         speedx = (xt - position.x) * speed / Mathf.Sqrt(Mathf.Pow(position.x - xt, 2) + Mathf.Pow(position.z - zt, 2));
         // set speed on z axis
         speedz = (zt - position.z) * speed / Mathf.Sqrt(Mathf.Pow(position.x - xt, 2) + Mathf.Pow(position.z - zt, 2));
+        if (speedx > 0)
+        {
+            transform.rotation = Quaternion.Euler(transform.rotation.x, (float)Mathf.Atan(-speedz / speedx) * 180 / 3.14f + 180, transform.rotation.z);
+        }
+        else if (speedx < 0)
+        {
+            transform.rotation = Quaternion.Euler(transform.rotation.x, (float)Mathf.Atan(-speedz / speedx) * 180 / 3.14f, transform.rotation.z);
+        }
+        else
+        {
+            transform.rotation = Quaternion.Euler(transform.rotation.x, 270, transform.rotation.z);
+        }
     }
     // every frame do it
     void Update()

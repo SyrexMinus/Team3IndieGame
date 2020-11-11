@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class KnifeControllingScript : MonoBehaviour
 {
-    bool isDragging=false;
-    bool isAbleToThrow=true;
+    bool isDragging = false;
+    bool isAbleToThrow = true;
     Vector3 startDragPosition;
+    AudioSource sound;
     Vector3 endDragPosition;
     float cooldownTime=0.5f;
     public GameObject knifePrefab;
     // Start is called before the first frame update
     void Start()
     {
-
+        sound = GetComponent<AudioSource>();
     }
     
     // Update is called once per frame
@@ -51,14 +52,19 @@ public class KnifeControllingScript : MonoBehaviour
         }
     }
 
+    public void DisableThrowing()
+    {
+        isAbleToThrow = false;
+    }
+
     public IEnumerator startThrowing()
     {
-
         Debug.Log("throw");
         Debug.Log("start position " + startDragPosition);
         Debug.Log("end position " + endDragPosition);
-        if (startDragPosition != endDragPosition)
+        if (startDragPosition != endDragPosition && startDragPosition.z <= -6.6)
         {
+            sound.Play();
             GameObject knifeObject = Instantiate(knifePrefab, startDragPosition, Quaternion.identity);
             KnifeScript knife = knifeObject.GetComponent<KnifeScript>();
 

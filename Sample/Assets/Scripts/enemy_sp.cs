@@ -5,20 +5,22 @@ using UnityEngine;
 public class enemy_sp :  MonoBehaviour
 {
     // delta time between spawns
-    public float minTimeBetweenSpawns = 1.5f;
-    public float randomDeltaTimeBetweenSpawns = 1.0f;
+    public float minTimeBetweenSpawns;
+    public float randomDeltaTimeBetweenSpawns;
     // current delta time between spawns
-    private float currentTimeBetweenSpawns = 0.0f;
+    private float currentTimeBetweenSpawns;
     // time has passed since the previous appearance
-    private float timePassed = 0.0f;
+    private float timePassed;
     // boundaries of spawn
-    public int x1 = -50, x2 = 50, z1 = -50, z2 = 50, xt = 0, zt = 0;
+    public float x1, x2, z1, z2;
+    // target coordinates
+    private float xt, zt;
     // horizontal shift for player's fingers
-    public int shiftz = 20;
+    public float shiftz;
     // Template of enemy object
     public GameObject enemyObjectTemplate;
     // randomly make start position
-    public Vector3 RandomCoordinatesOnBoundaries(int x1, int z1, int x2, int z2, int shiftz)
+    public Vector3 RandomCoordinatesOnBoundaries(float x1, float z1, float x2, float z2, float shiftz)
     {
         // get object position
         Vector3 position = transform.position;
@@ -46,11 +48,19 @@ public class enemy_sp :  MonoBehaviour
 
         return position;
     }
-    // create new enemy object 
+
+    // find treasure object and set xt and zt from this object coordinates
+    public void ResetTargetCoordinates()
+    {
+        GameObject treasureObject = GameObject.Find("Treasure");
+        Treasure treasureScript = (Treasure)treasureObject.GetComponent(typeof(Treasure));
+        xt = treasureScript.transform.position.x;
+        zt = treasureScript.transform.position.y;
+    }
+
     void Start()
     {
-        // create copy of enemyObjectTemplate with coordinates setRandomCoordinatesOnBoundaries and with parents coordinates basis
-        Instantiate(enemyObjectTemplate, RandomCoordinatesOnBoundaries(x1, z1, x2, z2, shiftz), Quaternion.identity); 
+        ResetTargetCoordinates();
     }
 
     // do in every frame
