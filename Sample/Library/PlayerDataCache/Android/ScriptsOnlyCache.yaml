@@ -2845,4 +2845,4 @@ ScriptsOnlyBuild:
   - Assets/Levels/Unity_Project1 18.unity
   - Assets/Levels/Unity_Project1 19.unity
   - Assets/Levels/Unity_Project1 20.unity
-  playerPath: C:/Users/Stepan/Documents/GitHub/Team3IndieGame/Sample/Throw1.0.apk
+  playerPath: C:/Users/Stepan/Documents/GitHub/Team3IndieGame/Sample/Build_Android.aab
